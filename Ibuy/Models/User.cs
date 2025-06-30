@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Ibuy.Models
 {
 
+    //Temporarily holds User data from signup
     public class UserFromRequest
     {
         public string Username { get; set; } = null!;
@@ -21,6 +22,7 @@ namespace Ibuy.Models
     }
 
 
+    //Takes data from UserFromRequest and sends password through encryption(via PasswordService.cs)
 
     public static class UserExtensions
     {
@@ -29,6 +31,8 @@ namespace Ibuy.Models
             return new User { Username = userRequest.Username, Email = userRequest.Email, PasswordHash = passwordService.HashPassword(userRequest.Password), PreferredContact = userRequest.PreferredContact };
         }
     }
+
+    //Handles main user model
 
     [Index(nameof(Username), IsUnique = true)]
     public class User
@@ -45,6 +49,7 @@ namespace Ibuy.Models
 
     }
 
+    //Handles Contact info update
     public class ContactUpdateRequest
     {
         public int UserId { get; set; }

@@ -15,7 +15,7 @@ namespace Ibuy.Service
             _context = context;
         }
 
-
+        //Helps with retrieval of user info
         public async Task<string> GetUsernameByIdAsync(int userId)
         {
             var user = await _context.Users

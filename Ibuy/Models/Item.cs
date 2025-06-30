@@ -14,6 +14,7 @@
         public DateTime? SoldAt {  get; set; }
     }
 
+    //Temporarily holds Sell forum data
     public class ItemRequestDto
     {
         public string ItemName { get; set; }

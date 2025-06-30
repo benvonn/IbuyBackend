@@ -5,7 +5,7 @@ using Ibuy.Data;
 using Microsoft.EntityFrameworkCore;
 
 
-//Add so it automatically logins in after successful signup
+
 
 
 namespace Ibuy.Controllers
@@ -20,7 +20,7 @@ namespace Ibuy.Controllers
         {
             _context = context;
         }
-        //All items from all users
+        //Handles submission of sell forum
         [HttpPost("selling/details")]
         public async Task<IActionResult> SellItem([FromBody] ItemRequestDto request)
         {
@@ -45,7 +45,9 @@ namespace Ibuy.Controllers
 
             return Ok(newItem);
         }
+        //All items from all users
 
+        //Retrieves all items for sale, and lists them
         [HttpGet("buylist")]
         public IActionResult ListItem()
         {
@@ -85,6 +87,8 @@ namespace Ibuy.Controllers
          //User Items via profile
 
         }
+
+        //Gets the specifics of desired item
         [HttpGet("user/{id}")]
         public IActionResult GetUserItems(int id)
         {
@@ -103,6 +107,8 @@ namespace Ibuy.Controllers
 
             return Ok(items);
         }
+
+        //Marks the item as sold, and begins the decay timer of item
         [HttpPut("{id}/mark-sold")]
         public async Task<IActionResult> MarkItemAsSold(int id)
         {
@@ -115,7 +121,7 @@ namespace Ibuy.Controllers
 
             return Ok(item);
         }
-
+        //Handles item deleteion, Only for user owned items
         [HttpDelete("{id}/delete-item")]
         public async Task<IActionResult> DeleteUserItem(int id)
         {

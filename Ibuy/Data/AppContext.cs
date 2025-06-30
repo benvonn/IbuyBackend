@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ibuy.Models;
-
+//Handles Database table creation
 namespace Ibuy.Data
 {
     public class AppDbContext : DbContext

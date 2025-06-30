@@ -24,6 +24,7 @@ namespace Ibuy.Controllers
             _userService = userService;
         }
 
+        //handles Signup
         [HttpPost("/register")]
         public async Task<IActionResult> Register([FromBody] UserFromRequest userFromRequest)
         {
@@ -48,7 +49,7 @@ namespace Ibuy.Controllers
             await _context.SaveChangesAsync();
             return Ok("User registered successfully");
         }
-
+        //Handles login
         [HttpPost("/login")]
         public async Task<IActionResult> Login([FromBody] UserFromRequest userFromRequest)
         {
@@ -78,6 +79,8 @@ namespace Ibuy.Controllers
 
             return Ok(new { Message = "Login Success"});
         }
+
+        //Retrieves User info, automatically after successful login
         [HttpGet("/login/user/{username}")]
         public async Task<IActionResult> GetUser(string username)
         {
@@ -95,6 +98,8 @@ namespace Ibuy.Controllers
             
         }   
 
+        //Handles Logout
+
         [HttpPost ("/user/logout")]
         public IActionResult Logout()
         {
@@ -109,7 +114,7 @@ namespace Ibuy.Controllers
             return Ok("Logged Out");
         }
 
-   
+        //Handles updates user profile(Preferred form of Contact)
         [HttpPut("update/user/profile")]
         public async Task<IActionResult> UpdateContactInfo([FromBody] ContactUpdateRequest request)
         {

@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 
 namespace Ibuy.Service
 {
+
+    //Hashs User password, encrpytion
     public class PasswordServices
     {
         private  readonly PasswordHasher<string> _hasher = new();
